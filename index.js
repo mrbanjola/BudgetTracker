@@ -21,7 +21,6 @@ function sendWebRequestToAPI(url, callback) {
         if (!error && response.statusCode == 200) {
 			console.log("we don't have an error");
 			callback(JSON.parse(body).data);
-
         } else {
             callback(error || new Error('Request to API failed'), null);
         }
