@@ -23,7 +23,6 @@ function sendWebRequestToAPI(url, callback) {
 			callback(JSON.parse(body).data);
 
         } else {
-			console.log("We have problem!!")
             callback(error || new Error('Request to API failed'), null);
         }
     });
