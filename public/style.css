@@ -1,0 +1,277 @@
+ @font-face {
+	font-family: "Buenos Aires Regular";
+	src: url("https://db.onlinewebfonts.com/t/604c3826d04854ecb7e53030f4acda4c.eot");
+	src: url("https://db.onlinewebfonts.com/t/604c3826d04854ecb7e53030f4acda4c.eot?#iefix")format("embedded-opentype"),
+		url("https://db.onlinewebfonts.com/t/604c3826d04854ecb7e53030f4acda4c.woff2")format("woff2"),
+		url("https://db.onlinewebfonts.com/t/604c3826d04854ecb7e53030f4acda4c.woff")format("woff"),
+		url("https://db.onlinewebfonts.com/t/604c3826d04854ecb7e53030f4acda4c.ttf")format("truetype"),
+		url("https://db.onlinewebfonts.com/t/604c3826d04854ecb7e53030f4acda4c.svg#BuenosAires-Regular")format("svg");
+ }
+
+
+ #body {
+	background: #FAF9F6;
+	color: #26263a;
+	width: 100%;
+	height: 100%;
+	font-family: "Buenos Aires Regular";
+ }
+
+ .full-row-card {
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+	width: 80%;
+	background: white;
+	color: black;
+	max-width: 400px;
+	min-width: 340px;
+	display: inline-block;
+ }
+
+
+ .leftPart {
+	border: 1 px solid green;
+	width: 35%;
+	float: left;
+	height: 50%;
+ }
+
+ .rightPart {
+	width: 65%;
+	float: right;
+	height: 100%;
+	text-align: center
+ }
+
+ .rightPart>* {
+	margin-top: 5px;
+	margin-bottom: 10px;
+ }
+
+ .leftPart>img {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+ }
+
+ #topNav {
+	background-color: #3700b3 !important;
+ }
+
+ .vehicleSearchInput {
+	width: 80%;
+	height: 30px;
+	border-radius: 30px;
+	border: none;
+	padding: 15px;
+	margin-top: 20px;
+ }
+
+.red-purchase-text {
+	color: #E55934 !important;
+}
+
+ .card-summary {
+	 box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+	background: white;
+	color: black;
+	text-align: center;
+	border-radius: 24px;
+	height: 110px;
+	position: relative;
+ }
+
+.card-regular {
+	box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+	background: white;
+	color: black;
+	text-align: center;
+	border-radius: 24px;
+	position: relative;
+}
+
+ .card-summary-text-small-top {
+	margin-top: 12px;
+ }
+
+ .card-summary-text-small-bottom {
+	position: absolute;
+	bottom: -5px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+ }
+
+ .card-summary-text-large{
+	color: #3700b3;
+	font-size: 34px;
+	 position: absolute;
+	 left: 50%;
+	 transform: translate(-50%, -50%);
+
+	 width: 90%;
+ }
+
+.card-summary-text-large-top{
+	top:40%;
+}
+
+.card-summary-text-large-bottom{
+	top:60%;
+}
+
+#add-new-purchase-button {
+	position: fixed;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	bottom: 80px;
+	right: 15px;
+	background: #3700b3;
+	border: none
+}
+
+ .description-container {
+	height: 70px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+ }
+
+
+
+
+ .section-header {
+	font-weight: bold;
+	color: #26263a;
+	margin-bottom:25px;
+ }
+
+ .section-green {
+	background: rgb(218, 255, 240);
+	background: linear-gradient(180deg, rgba(218, 255, 240, 0.5438550420168067) 0%, rgba(250, 249, 246, 1) 90%);
+ }
+
+ .section-yellow {
+	background: rgb(254, 255, 218);
+	background: linear-gradient(180deg, rgba(254, 255, 218, 0.5438550420168067) 0%, rgba(250, 249, 246, 1) 90%);
+ }
+
+ .section-red {
+	background: rgba(255, 155, 155, 100);
+	background: linear-gradient(180deg, rgba(255, 155, 155, 0.3438550420168067) 0%, rgba(250, 249, 246, 1) 90%);
+ }
+
+ .section-blue {
+	background: rgb(218, 232, 255);
+	background: linear-gradient(180deg, rgba(218, 232, 255, 1) 0%, rgba(250, 249, 246, 0.01) 90%);
+ }
+
+ .section-toggle-button {
+	width: 100px;
+	border: 3px solid #26263a;
+	background: none;
+	border-radius: 12px;
+ }
+
+ .handleDeviationButton {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #f9535c;
+	color: white;
+	font-weight: bold;
+	border: none;
+	border-radius: 18px;
+	padding: 8px;
+ }
+
+ .top-section {
+	margin-top: 65px;
+ }
+
+ .bottom-section {
+	margin-top: 70px;
+	margin-bottom: 70px;
+	height: 10px;
+ }
+
+ .show-all-button {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	border: none;
+	width: 80%;
+	color: #26263a;
+	font-weight: bold;
+	padding: 5px;
+
+ }
+
+ .show-all-button-container {
+	width: 80%;
+ }
+
+ .homeCardImage {
+	max-width: 90%;
+	height: 150px;
+	object-fit: contain;
+	border-radius: 13px;
+	object-fit: cover;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+ }
+
+
+
+ .carouselImage {
+	width: 90%;
+	max-height: 400px;
+	object-fit: contain;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+ }
+
+ .modal-header {
+	background: #3700b3;
+	color: white;
+ }
+
+ #newDeviations,
+ #readyForPickup {
+	background: white;
+	border-radius: 12px;
+	padding: 10px;
+ }
+
+ .showVehicleDetails {
+	height: 30px;
+	width: 80px;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	background: #9dc7c5;
+	color: #26263a;
+	border-radius: 6px;
+	padding: 3px;
+	border: none;
+ }
+
+
+
+ @keyframes flash {
+	0% {
+		background-color: #FFF2;
+		box-shadow: 32px 0 #FFF2, -32px 0 #FFF;
+	}
+
+	50% {
+		background-color: #26263a;
+		box-shadow: 32px 0 #FFF2, -32px 0 #FFF2;
+	}
+
+	100% {
+		background-color: #FFF2;
+		box-shadow: 32px 0 #FFF, -32px 0 #FFF2;
+	}
+ }
