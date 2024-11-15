@@ -46,12 +46,22 @@ app.use(express.static(publicDirectoryPath));
 
 io.on('connection', socket => {
 	console.log('User connected');
+	socket.on("requestExpenses",(limitToCurrentPeriod) => {
 
+		filterExpenses = limitToCurrentPeriod ?? true;
+		
 		GetExpensesForCurrentPeriod((expenses) => {
-		socket.emit("expenses",expenses.filter(expense => expense.salaryPeriod == salaryPeriod.salaryPeriod));
-	});
 
-	socket.emit("salaryPeriod",salaryPeriod);
+			if (filterExpenses) {
+				expenses = expenses.filter(expense => expense.salaryPeriod == salaryPeriod.salaryPeriod);
+			}
+			
+			socket.emit("expenses",expenses);
+		});
+
+		socket.emit("salaryPeriod",salaryPeriod);
+	});
+		
 
 
 });

@@ -78,32 +78,19 @@
         </div>
       </div>
     </div>
+    <div id = "mainContainer">
     <div class="section p-4">
       <h4 class="section-header">Denna period</h4>
       <div class="row mx-auto">
         <div class="card-regular col-10 mx-auto">
-          <p class="card-summary-text-small-top">Dina största kategorier</p>
+          <p class="card-summary-text-small-top">Fasta kostnader</p>
           <p></p>
-          <table id = "topCategoriesTable" class="table border-dark table-hover">
-
+          <table id = "fixedExpensesTable" class="table border-dark table-hover">
           </table>
         </div>
       </div>
     </div>
-
-    <div class="section p-4">
-      <h4 class="section-header">Denna period</h4>
-      <div class="row mx-auto">
-        <div class="card-regular col-10 mx-auto">
-          <p class="card-summary-text-small-top">Dina största köp</p>
-          <p></p>
-          <table id = "topExpensesTable" class="table border-dark table-hover">
-
-          </table>
-        </div>
-      </div>
     </div>
-
     <button
       id="add-new-purchase-button"
       data-bs-toggle="modal"
@@ -176,20 +163,19 @@
       style="margin-bottom: -20px"
     >
       <div class="mx-auto text-center my-0">
-        <a href="index.html">
-          <i
-            targetView="home"
-            id="homeViewButton"
-            class="fa-solid fa-xl fa-house my-3"
-            style="color: #26263a"
-          ></i>
+        <a href = "/index.html"><i
+          targetView="home"
+          id="homeViewButton"
+          class="fa-solid fa-xl fa-house my-3"
+          style="color: #26263a"
+        ></i>
         </a>
         <p style="font-size: 12px">Översikt</p>
       </div>
 
       <div class="mx-auto text-center my-0">
-        <a href = "/details.html">
-          <i
+        <a href="/details.html">
+        <i
           targetView="vehicles"
           id="vehicleViewButton"
           class="fa-solid fa-comments-dollar fa-xl my-3"
@@ -220,7 +206,7 @@
   <script id="expenseTemplate" type="text/html">
     <tr>
       <td>{{description}}</td>
-      <td class="red-purchase-text">{{sum}}</td>
+      <td class="{{textColor}}-purchase-text">{{sum}}</td>
     </tr>
     </script>
   <script id="nonFixedSumTemplate" type="text/html">
@@ -228,9 +214,22 @@
      {{sum}}
    </h2>
   </script>
+  <script id="tableSectionTemplate" type="text/html">
+    <div class="section p-4">
+      <h4 class="section-header">{{category}}</h4>
+      <div class="row mx-auto">
+        <div class="card-regular col-10 mx-auto">
+          <p class="card-summary-text-small-top">Alla transaktioner</p>
+          <p></p>
+          <table id = "{{id}}Table" class="table border-dark table-hover">
+          </table>
+        </div>
+      </div>
+    </div>
+  </script>
     
 	<script src = "/socket.io/socket.io.js"></script>
-	<script src = "/scripts/scripts.js"></script>
+	<script src = "/scripts/details.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
 
  

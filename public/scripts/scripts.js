@@ -11,6 +11,8 @@ const $topExpensesTable = document.getElementById("topExpensesTable");
 const $nonFixedSumContainer = document.getElementById("nonFixedSumContainer");
 const nonFixedSumTemplate = document.querySelector("#nonFixedSumTemplate").innerHTML;
 
+socket.emit("requestExpenses",true);
+
 socket.on("expenses", (expenses) => {
 
     if (_isLoaded) return;
