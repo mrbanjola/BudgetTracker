@@ -66,6 +66,10 @@
 	margin-top: 20px;
  }
 
+.graphCanvas {
+	height: 300px !important;
+}
+
 .red-purchase-text {
 	color: #E55934 !important;
 }

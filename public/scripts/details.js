@@ -16,7 +16,7 @@ socket.on("expenses", (expenses) => {
 	_expenses = expenses;
 
 	let fixedExpenses = expenses.filter(expense => {
-		return(expense.isFixedExpense && !expense.category.includes("Sparande"))
+		return(expense.isFixedExpense && !expense.isSavings)
 	});
 	let total = 0;
 	for (var expense of fixedExpenses) {

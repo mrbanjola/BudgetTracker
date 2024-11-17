@@ -7,6 +7,7 @@ const fileUpload = require('express-fileupload');
 const request = require('request');
 const Database = require("@replit/database");
 const db = new Database();
+const helpers = require('./helpers');
 require('./utils.js');
 
 const salaryPeriod = GetSalaryPeriod();
@@ -29,6 +30,10 @@ function sendWebRequestToAPI(url, callback) {
 const url = process.env['API_URL']
 sendWebRequestToAPI(url,(data) => {
 	db.set("expenses",data);
+	let availableCategories = JSON.parse(data)
+								.map(expense => expense.category)
+								.filter(helpers.onlyUnique);
+	db.set("categories",availableCategories);
 } )
 
 
@@ -57,12 +62,20 @@ io.on('connection', socket => {
 			}
 			
 			socket.emit("expenses",expenses);
+			db.get("budget").then(budget => {
+				socket.emit("budget",(budget.value));
+			});
 		});
 
 		socket.emit("salaryPeriod",salaryPeriod);
+		
 	});
 		
-
+	socket.on("submitNewBudget",(budget) => {
+		db.set("budget",budget).then(() => {
+			socket.emit("budgetSubmitted");
+		})
+	})
 
 });
 

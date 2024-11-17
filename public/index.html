@@ -128,32 +128,13 @@
           <!-- Modal body -->
           <div class="modal-body">
 			  <div class = "section">
-				  <h4 class = "section-header">Lägg till köp</h4>
+				  <h4 class = "section-header">Ställ in budget</h4>
 			  </div>
-			  <div class = "section">
-				  <label for = "purchase-name">Vad har du köpt?</label>
-				  <input class = "form-control" type = "text" name = "purchase-name" placeholder = "Titel">
-				  <label for = "purchase-price">Vad kostade det?</label>
-				  <input class = "form-control" type = "number" name = "purchase-price" placeholder = "Titel">
-				  <label for = "purchase-date">När hände detta?</label>
-				  <input class = "form-control" type = "date" name = "purchase-date">
-				  <label for = "purchase-comment">Har du något mer att berätta?</label>
-				  <textarea class = "form-control" name = "purchase-comment" placeholder = "Kommentar"></textarea>
-				  <button id = "submit-new-purchase-button" class = "btn btn-primary my-4">Lägg till</button>
-
-				  <script>
-					  document.getElementById("submit-new-purchase-button").addEventListener("click", (e) => {
-						  let data = {
-							  name: document.getElementsByName("purchase-name")[0].value,
-							  price: document.getElementsByName("purchase-price")[0].value,
-							  comment: document.getElementsByName("purchase-comment")[0].value
-						  };
-
-						  console.table(data);
-					  });
-				  </script>
+			  <div class = "section" id = "budget-section">
+          
+          <button id = "submit-new-purchase-button" class = "btn btn-primary my-4">Spara</button>
 				  
-		  </div>
+		    </div>
 
           <!-- Modal footer -->
           <div class="modal-footer">
@@ -199,20 +180,24 @@
         <p style="font-size: 12px">Detaljer</p>
       </div>
       <div class="mx-auto text-center my-0">
+        <a href = "/stats.html">
         <i
           id="deviatonsViewButton"
           class="fa-solid fa-xl fa-file-invoice my-3"
           style="color: #26263a"
         ></i>
+        </a>
         <p style="font-size: 12px">Statistik</p>
       </div>
       <div class="mx-auto text-center my-0">
-        <i
-          id="fmsViewButton"
-          class="fa-solid fa-location-dot fa-xl my-3"
-          style="color: #26263a"
-        ></i>
-        <p style="font-size: 12px">Vad?</p>
+        <a href = "/budget.html">
+          <i
+            id="fmsViewButton"
+            class="fa-solid fa-money-check-dollar fa-xl my-3"
+            style="color: #26263a"
+          ></i>
+          </a>
+        <p style="font-size: 12px">Budget</p>
       </div>
     </nav>
   </body>
@@ -227,6 +212,11 @@
     <h2 class="card-summary-text-large card-summary-text-large-top">
      {{sum}}
    </h2>
+  </script>
+
+  <script id = "budgetSetterTemplate" type = "text/html">
+    <label id = "{{cleaned_category}}_label" for = "{{category}}">{{category}} - 1550kr</label>
+    <input id = "{{cleaned_category}}" class = "form-control" type = "range" name = "{{category}}" value = {{value}} min = "0" max = "15000" step = 50>
   </script>
     
 	<script src = "/socket.io/socket.io.js"></script>
