@@ -18,7 +18,7 @@ const budgetSetterTemplate = document.querySelector(
     "#budgetSetterTemplate",
 ).innerHTML;
 
-socket.emit("requestExpenses", true);
+socket.emit("requestExpenses");
 
 socket.on("budgetSubmitted", () => {
     console.log("Nice bazonkas, budget is home.")
@@ -26,6 +26,7 @@ socket.on("budgetSubmitted", () => {
 
 socket.on("budget", (budget) => {
     console.log(budget);
+    $budgetSetterContainer.innerHTML = "";
     let categories = Object.keys(budget);
     for (var category of categories) {
         var html = Mustache.render(budgetSetterTemplate, {

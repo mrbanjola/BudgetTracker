@@ -3,7 +3,7 @@ var _expenses;
 
 const socket = io();
 
-socket.emit("requestExpenses", false);
+socket.emit("requestExpenses",false);
 socket.on("expenses", (expenses) =>{
 	_expenses = expenses;
 

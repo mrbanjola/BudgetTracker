@@ -1,9 +1,3 @@
-<!--
-  Hit RUN to see this project in action!
-
-  This project will auto-refresh as you edit the HTML, CSS and JS. See README.md for more info (including how to disable auto-refresh and install packages).
--->
-
 <!doctype html>
 <html>
   <head>
@@ -59,13 +53,21 @@
 	  <h4 class="section-header">Sammanfattning</h4>
 	  <div class="row mx-auto">
 		<div class="card-summary container col-5 mx-auto">
-		  <p class="card-summary-text-small-top">Dagar efter lön</p>
-		  <h1 id = "daysSinceSalary" class="card-summary-text-large card-summary-text-large-bottom">
+		  <p class="card-summary-text-small-top">Fasta</p>
+		  <h1 id = "fixedExpenseText" class="card-summary-text-large card-summary-text-large-bottom">
 
 		  </h1>
 		</div>
 		<div id = "nonFixedSumContainer" class="card-summary container col-6 mx-auto">
-		  <p class="card-summary-text-small-bottom">Rörliga kostnader</p>
+			<h1
+				id = "totalBudgetText"
+				class="card-summary-text-large card-summary-text-large-top"
+			  >
+				  <div class="spinner-border text-primary" role="status">
+					<span class="sr-only">Loading...</span>
+				  </div>
+			  </h1>
+		  <p class="card-summary-text-small-bottom">Total budget</p>
 		</div>
 		<div class="card-summary container col-7 my-3 mx-auto">
 		  <h1
@@ -108,11 +110,46 @@
 
 		  <!-- Modal body -->
 		  <div class="modal-body">
+			  <div class="section p-2">
+				 <h4 class="section-header">Inställningar</h4>
+				 <div class="row mx-auto">
+				 <div class="card-regular col-10 mx-auto">
+				   <p class="card-summary-text-small-top">Välj löneperiod</p>
+				  <form id = "salaryPeriodForm" class = "form-control">
+					<select id = "salaryPeriodSelect" class = "form-select salary-period-select">
+					  <option value = "0">Januari</option>
+					  <option value = "1">Februari</option>
+					  <option value = "2">Mars</option>
+					  <option value = "3">April</option>
+					  <option value = "4">Maj</option>
+					  <option value = "5">Juni</option>
+					  <option value = "6">Juli</option>
+					  <option value = "7">Augusti</option>
+					  <option value = "8">September</option>
+					  <option value = "9">Oktober</option>
+					  <option value = "10">November</option>
+					  <option value = "11">December</option>
+					</select>
+					<button id = "changeSalaryPeriod" type = "submit" class = "btn btn-primary my-2 disabled">Ändra</button>
+				  </form>
+				 </div>
+				 </div>
+			   </div>
+			  <div class="section my-3">
+					<h4 class="section-header">Fasta kostnader</h4>
+					<div class="row mx-auto">
+						<div class="card-regular col-10 mx-auto">
+							<p class="card-summary-text-small-top">Välj fasta kostnader</p>
+							<form id="fixedCostsForm">
+							</form>
+						</div>
+					</div>
+				</div>
 			  <div class = "section">
 				  <h4 class = "section-header">Ställ in budget</h4>
 			  </div>
 			  <div class = "section" id = "budget-section">
-
+			  </div>
 		  <button id = "submit-new-purchase-button" class = "btn btn-primary my-4">Spara</button>
 
 			</div>
@@ -197,7 +234,7 @@
 
   <script id = "budgetSetterTemplate" type = "text/html">
 	<label id = "{{cleaned_category}}_label" for = "{{category}}">{{category}} - 1550kr</label>
-	<input id = "{{cleaned_category}}" class = "form-control" type = "range" name = "{{category}}" value = {{value}} min = "0" max = "15000" step = 50>
+	<input id = "{{cleaned_category}}" class = "form-range" type = "range" name = "{{category}}" value = {{value}} min = "0" max = "5000" step = 50>
   </script>
 
 	 <script id = "budgetSectionTemplate" type = "text/html">
@@ -209,11 +246,34 @@
 				<div class="progress">
 				   <div class="progress-bar bg-{{status}}" role="progressbar" style="width: {{percentage}}%;" aria-valuenow="{{spent}}" aria-valuemin="0" aria-valuemax="{{budgeted}}">{{spent}}/{{budgeted}}</div>
 				 </div>
+		 		<div class = "show-all-button-container">
+		 <button class="show-all-button mx-auto collapsed" data-bs-toggle="collapse" href="#collapsible_{{cleaned_category}}" role="button" aria-expanded="false"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+		 </button>
+	 			</div>
+				<div id = "collapsible_{{cleaned_category}}" class = "collapse">
+			 		 <table class = "table table-striped">
+			 		 	<thead>
+			 		 		<tr colspan = "2">
+			 		 			<th style = "text-align: "center"; width: 100%;"><i class="fa-solid fa-chevron-down"></i></th>
+		 					</tr>
+		 				</thead>
+				 			<tbody id = "table_{{cleaned_category}}">
+							
+							
+						    </tbody>
+		 			 </table>
+				</div>
 			 </div>
 		   </div>
 		 </div>
 	  </script>
-
+	 <script id = "fixedCostSelectTemplate" type = "text/html">
+		<div class="form-check">
+			<input {{isActive}} type="checkbox" id="{{cleaned_name}}_input" name="{{cleaned_name}}_input" class="form-check-input" amount = "{{sum}}" fixed_cost = "{{name}}">
+			<label for="{{cleaned_name}}_input" class="form-check-label">{{name}} - {{sum}}kr</label>
+		</div>
+	 </script>
+	
 	<script src = "/socket.io/socket.io.js"></script>
 	<script src = "/scripts/budget.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>

@@ -8,7 +8,7 @@ const $fixedExpensesTable = document.getElementById("fixedExpensesTable");
 const tableSectionTemplate = document.getElementById("tableSectionTemplate").innerHTML;
 const $mainContainer = document.getElementById("mainContainer");
 
-socket.emit("requestExpenses",true);
+socket.emit("requestExpenses");
 
 socket.on("expenses", (expenses) => {
 	

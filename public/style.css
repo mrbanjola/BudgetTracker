@@ -66,6 +66,18 @@
 	margin-top: 20px;
  }
 
+.progress {
+	margin-bottom: 20px;
+	height: 25px;
+	border-radius: 12px;
+}
+
+#salaryPeriodForm {
+	padding: 20px;
+	margin-bottom: 20px;
+	padding-bottom: 0px;
+};
+
 .graphCanvas {
 	height: 300px !important;
 }
@@ -213,6 +225,10 @@
 	padding: 5px;
 
  }
+
+#fixedCostsForm {
+	text-align: left;
+}
 
  .show-all-button-container {
 	width: 80%;
